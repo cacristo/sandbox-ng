@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
@@ -24,12 +23,10 @@ export class CityComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 50];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(public rest: SandboxService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.dataSource.sort = this.sort;
     this.getCities(this.paginator.pageIndex, this.pageSize);
   }
 
